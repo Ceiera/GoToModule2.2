@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify</title>
+</head>
+<body>
+    <form action="" id="formTambah">
+        <input type="text" id="title" placeholder="title">
+        <input type="text" id="artist" placeholder="artist, / untuk artis banyak">
+        <input type="text" id="url" placeholder="url">
+        <button type="submit" onclick="submit()">submit</button>
+    </form>
+    <script>
+        async function submit() {
+            const data = document.getElementById('formTambah')
+            const formData = new FormData(data)
+            const response = await fetch('localhost:3000/tambah-lagu', {
+                method: "POST", 
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData), // body data type must match "Content-Type" header
+            })
+         alert(response.json())
+        }
+    </script>
+</body>
+</html>
