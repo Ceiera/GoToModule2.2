@@ -20,7 +20,6 @@
                     Search
                 </h4>
             </div>
-            <br>
             <div class="yourLibrary">
                 <div class="judul"> 
                     <h4><span><ion-icon name="library-outline"></ion-icon></span>Your Library
@@ -55,23 +54,87 @@
                             <h5>Artist</h5>
                         </div>
                     </div>
+                    <div class="playlist">
+                        <img src="https://cdn.vectorstock.com/i/1000x1000/69/69/food-cover-pixel-image-logo-icon-for-8-bit-game-vector-38186969.webp" alt="">
+                        <div class="detail">
+                            <h4>Frank</h4>
+                            <h5>Artist</h5>
+                        </div>
+                    </div>
+                    <div class="playlist">
+                        <img src="https://cdn.vectorstock.com/i/1000x1000/69/69/food-cover-pixel-image-logo-icon-for-8-bit-game-vector-38186969.webp" alt="">
+                        <div class="detail">
+                            <h4>Frank</h4>
+                            <h5>Artist</h5>
+                        </div>
+                    </div>
                 </div>   
             </div>
         </div>
         <div class="right">
-            <div class="nav">
-                <div class="akun">
-                    <div class="info">
-                        <h5>Explore Premium</h5>
+            <div class="header">
+                <h1>Good Morning</h1>
+            </div>
+            <div class="isi">
+                <h2>List Song</h2>
+                <div class="daftar" id="daftarLagu">
+                    <!-- <div class="song">
+                        <img src="https://images.unsplash.com/photo-1595356700395-6f14b5c1f33f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bG93JTIwcmVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=250&q=60" alt="">
+                        <h4 class="songtitle">Judul</h4>
+                        <h5 class="songartist">Artist</h5>
                     </div>
-                    <div class="info">
-                        <h5>Install Apps</h5>
+                    <div class="song">
+                        <img src="https://images.unsplash.com/photo-1595356700395-6f14b5c1f33f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bG93JTIwcmVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=250&q=60" alt="">
+                        <h4 class="songtitle">Judul</h4>
+                        <h5 class="songartist">Artist</h5>
                     </div>
+                    <div class="song">
+                        <img src="https://images.unsplash.com/photo-1595356700395-6f14b5c1f33f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bG93JTIwcmVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=250&q=60" alt="">
+                        <h4 class="songtitle">Judul</h4>
+                        <h5 class="songartist">Artist</h5>
+                    </div>
+                    <div class="song">
+                        <img src="https://images.unsplash.com/photo-1595356700395-6f14b5c1f33f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bG93JTIwcmVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=250&q=60" alt="">
+                        <h4 class="songtitle">Judul</h4>
+                        <h5 class="songartist">Artist</h5>
+                    </div>
+                    <div class="song">
+                        <img src="https://images.unsplash.com/photo-1595356700395-6f14b5c1f33f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bG93JTIwcmVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=250&q=60" alt="">
+                        <h4 class="songtitle">Judul</h4>
+                        <h5 class="songartist">Artist</h5>
+                    </div> -->
                 </div>
             </div>
-            <div class="scroll"></div>
         </div>
     </div>
-    <div class="footer"></div>
+    <div class="footer">
+        <div class="thesong"> </div>
+        <div class="player">
+            <a href="http://localhost:3000/tambah"><button style="color: black;">Tambah Lagu</button></a>
+            <div class="tombol"></div>
+            <div class="radiobar"></div>
+            
+        </div>
+        <div class="volume">
+        </div>
+        
+    </div>
+    <script>
+        const box = document.getElementById('daftarLagu')
+        const muncul = async () => {
+            const response = await fetch('http://localhost:3000/ambil-lagu')
+            const anu = await response.json()
+            anu.forEach(element => {
+                const song =  document.createElement('div')
+                song.classList.add('song')
+                song.innerHTML = `<a href="${element.url}" style="text-decoration:none"><img src="https://images.unsplash.com/photo-1595356700395-6f14b5c1f33f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bG93JTIwcmVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=250&q=60" alt="">
+                        <h4 class="songtitle">${element.title}</h4>
+                        <h5 class="songartist">${element.artists[0].name}</h5></a>`
+                box.appendChild(song)
+                console.log(element);
+            })
+        }
+        muncul()
+    </script>
 </body>
 </html>

@@ -20,30 +20,30 @@ app.get('/tambah', (req, res) => {
 })
 
 app.get('/ambil-lagu', (req, res) => {
-  console.log(playlist);
   res.status(200).send(JSON.stringify(playlist))
 })
 
 app.post('/tambah-lagu', (req, res) => {
-  console.log(req.body);
-  const {name, url} = req.body
-  const artist = req.body.artist
-  const newArtis = artist.split('/')
+  const { title, artists,  url} = req.body
+  const newArtis = artists.split('/')
   const arraysaved = []
   newArtis.forEach(element => {
     arraysaved.push({name: element})
   });
+  console.log(arraysaved);
   const dataSaved = {
-    name: name,
-    artist: arraysaved,
+    title: title,
+    artists: arraysaved,
     url: url
   }
-  const listBaru = playlist.push(body)
-  fs.writeFile('playlist.json', JSON.stringify(listBaru), (err, done) => {
+  const play = playlist
+  play.push(dataSaved)
+  console.log(play);
+  fs.writeFile('playlist.json', JSON.stringify(play), (err, done) => {
     if (err) {
       res.status(500).send({ error: "error pas write file" })
     }else{
-      res.status(201).send(playlist)
+      res.status(200).send(playlist)
     }
   })
 })

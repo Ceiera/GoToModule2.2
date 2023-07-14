@@ -9,11 +9,42 @@
     src: url(https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap);
 }
 
+img{
+ border-radius: 5px;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+width: 20px;
+}
+
+::-webkit-scrollbar-track {
+background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+background-color: #d6dee1;
+border-radius: 20px;
+border: 6px solid transparent;
+background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background-color: #a8bbbf;
+}
+
+
 body{
     background-color: black;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 1fr auto;
 }
 .main {
     padding: 5px 5px 0 5px;
+    display: grid;
+    grid-template-columns: 310px auto;
+    padding: 20px;
 }
 .left {
     width: 300px;
@@ -34,6 +65,14 @@ body{
     background-color: rgba(36, 34, 34, 0.5);
     padding: 2px 20px;
     border-radius: 5px;
+    margin-top: 8px;
+}
+.yourLibrary .isi{
+    overflow-y: hidden;
+    max-height: 350px;
+}
+.yourLibrary .isi:hover{
+    overflow-y: scroll;
 }
 .yourLibrary span{
     float: left;
@@ -63,7 +102,52 @@ span .kanan{
     margin: 10px;
     font-weight: normal;
 }
-
 .right{
-    float: right;
+    display: grid;
+    grid-template-rows: 100px auto;
+    background-color: rgba(36, 34, 34, 0.5);
+    padding: 0 20px;
+    border-radius: 5px;
+}
+
+.daftar {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: hidden;
+    height: 350px;
+}
+.daftar:hover{
+    overflow-y: scroll;
+}
+.song  {
+    padding: 10px;
+}
+.song img{
+    width: 200px;
+}
+.song h4{
+    margin: 0;
+}
+.song h5{
+    margin-top: 0px;
+}
+
+.song:hover{
+    background-color: rgba(36, 34, 34, 0.7);
+}
+
+.footer{
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 400px 1fr;
+}
+.player, .thesong, .volume{
+    padding: 20px 0;
+}
+.player{
+    text-align: center;
+}
+
+.volume{
+    text-align: right;
 }

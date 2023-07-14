@@ -6,25 +6,35 @@
     <title>Spotify</title>
 </head>
 <body>
-    <form action="" id="formTambah">
-        <input type="text" id="title" placeholder="title">
-        <input type="text" id="artist" placeholder="artist, / untuk artis banyak">
-        <input type="text" id="url" placeholder="url">
-        <button type="submit" onclick="submit()">submit</button>
-    </form>
+    <input type="text" id="title" placeholder="title">
+    <input type="text" id="artist" placeholder="artist, / untuk artis banyak">
+    <input type="text" id="url" placeholder="url">
+    <input type="submit" onclick="submit()" value="Tambah"></input>
     <script>
-        async function submit() {
-            const data = document.getElementById('formTambah')
-            const formData = new FormData(data)
-            const response = await fetch('localhost:3000/tambah-lagu', {
-                method: "POST", 
+        const title = document.getElementById("title");
+        const artist = document.getElementById('artist')
+        const url = document.getElementById('url')   
+        const submit = async() => {
+            const data = {
+                "title": `${title.value}`,
+                "artists": `${artist.value}`,
+                "url":`${url.value}`
+            }
+            const response = await fetch('http://localhost:3000/tambah-lagu', {
+                method: 'POST',
                 headers: {
-                    "Content-Type": "application/json",
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(formData), // body data type must match "Content-Type" header
+                body: JSON.stringify(data)
+                
             })
-         alert(response.json())
+            if (response.status == 200 ) {
+                window.location.href = 'http://localhost:3000/'
+            }else{
+                alert('Error')
+            }
         }
     </script>
+   
 </body>
 </html>

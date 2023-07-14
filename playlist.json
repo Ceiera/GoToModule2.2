@@ -1,7 +1,1 @@
-[{
-    "title": "ini judul",
-    "artists": [{
-        "name": "James"
-    }],
-    "url": "alamat.com"     
-}]
+[{"title":"ini judul","artists":[{"name":"James"}],"url":"alamat.com"},{"title":"asd","artists":[{"name":"adu"},{"name":"adu"}],"url":"https://www.bilibili.tv/id/video/2042510761"}]
